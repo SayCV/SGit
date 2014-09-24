@@ -36,7 +36,18 @@ public class FsUtils {
         file.deleteOnExit();
         return file;
     }
-
+		
+		public static File getPublicDir(String dirname, boolean isCreate) {
+        File mDir = new File(
+        	Environment.getExternalStorageDirectory().getPath() +
+        	"sayWorking", 
+        	dirname);
+        if (!mDir.exists() && isCreate) {
+            mDir.mkdir();
+        }
+        return mDir;
+    }
+    
     public static File getDir(String dirname) {
         return getDir(dirname, true);
     }

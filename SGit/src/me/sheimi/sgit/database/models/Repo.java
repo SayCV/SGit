@@ -72,6 +72,7 @@ public class Repo implements Comparable<Repo>, Serializable {
     public static final String DOT_GIT_DIR = ".git";
     public static final String EXTERNAL_PREFIX = "external://";
     public static final String REPO_DIR = "repo";
+		public static final String REPO_EXT_DIR = "OpenRepo";
 
     private static SparseArray<RepoOpTask> mRepoTasks = new SparseArray<RepoOpTask>();
 
@@ -444,12 +445,20 @@ public class Repo implements Comparable<Repo>, Serializable {
     public File getDir() {
         return Repo.getDir(getLocalPath());
     }
+    
+    public File getPublicDir() {
+        if (Repo.isExternal(localpath)) {
+            return new File(localpath.substring(Repo.EXTERNAL_PREFIX.length()));
+        }
+        File repoDir = FsUtils.getPublicDir(REPO_EXT_DIR, true);
+        return new File(repoDir, localpath);
+    }
 
     public Git getGit() throws StopTaskException {
         if (mGit != null)
             return mGit;
         try {
-            File repoFile = getDir();
+            File repoFile = getPublicDir /* getDir */();
             mGit = Git.open(repoFile);
             return mGit;
         } catch (RepositoryNotFoundException e) {

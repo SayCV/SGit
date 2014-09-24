@@ -16,6 +16,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.webkit.MimeTypeMap;
 
+import android.os.Environment;
+
 /**
  * Created by sheimi on 8/8/13.
  */
@@ -40,7 +42,7 @@ public class FsUtils {
 		public static File getPublicDir(String dirname, boolean isCreate) {
         File mDir = new File(
         	Environment.getExternalStorageDirectory().getPath() +
-        	"sayWorking", 
+        	"sayWorking/", 
         	dirname);
         if (!mDir.exists() && isCreate) {
             mDir.mkdir();

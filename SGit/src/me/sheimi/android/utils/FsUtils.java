@@ -17,12 +17,15 @@ import android.net.Uri;
 import android.webkit.MimeTypeMap;
 
 import android.os.Environment;
+import me.sheimi.logger.Log;
 
 /**
  * Created by sheimi on 8/8/13.
  */
 public class FsUtils {
-
+		
+		private final static String TAG = FsUtils.class.getCanonicalName();
+		
     public static final SimpleDateFormat TIMESTAMP_FORMATTER = new SimpleDateFormat(
             "yyyyMMdd_HHmmss", Locale.getDefault());
     public static final String PNG_SUFFIX = ".png";
@@ -40,17 +43,27 @@ public class FsUtils {
     }
 		
 		public static File getPublicDir(String dirname, boolean isCreate) {
-        File mDir = new File(
+        
+        if(!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
+            	// Not found SDCard ?
+            	SheimiFragmentActivity activeActivity = BasicFunctions.getActiveActivity();
+            	return activeActivity.getFilesDir();
+            } else {
+            	// SDCard Exist ?
+            	return getDir(dirname, isCreate);
+            }
+        /*File mDir = new File(
         	Environment.getExternalStorageDirectory().getPath() +
         	"sayWorking/", 
         	dirname);
         if (!mDir.exists() && isCreate) {
             mDir.mkdir();
         }
-        return mDir;
+        return mDir;*/
     }
     
     public static File getDir(String dirname) {
+        Log.d(TAG, getDir(dirname, true).getName());
         return getDir(dirname, true);
     }
 
@@ -74,7 +87,7 @@ public class FsUtils {
             return activeActivity.getFilesDir();
         }
     }
-
+    
     public static String getMimeType(String url) {
         String type = null;
         String extension = MimeTypeMap.getFileExtensionFromUrl(url

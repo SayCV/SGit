@@ -445,21 +445,12 @@ public class Repo implements Comparable<Repo>, Serializable {
     public File getDir() {
         return Repo.getDir(getLocalPath());
     }
-    
-    public File getPublicDir() {
-        String localpath = getLocalPath();
-        if (Repo.isExternal(localpath)) {
-            return new File(localpath.substring(Repo.EXTERNAL_PREFIX.length()));
-        }
-        File repoDir = FsUtils.getPublicDir(REPO_EXT_DIR, true);
-        return new File(repoDir, localpath);
-    }
 
     public Git getGit() throws StopTaskException {
         if (mGit != null)
             return mGit;
         try {
-            File repoFile = getPublicDir /* getDir */();
+            File repoFile = getDir();
             mGit = Git.open(repoFile);
             return mGit;
         } catch (RepositoryNotFoundException e) {

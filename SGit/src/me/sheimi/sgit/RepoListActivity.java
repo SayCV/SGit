@@ -19,16 +19,36 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import me.sheimi.sgit.ssh.PrivateKeyUtils;
 
-public class RepoListActivity extends SheimiFragmentActivity {
+import me.sheimi.android.utils.BasicFunctions;
+import me.sheimi.logger.Log;
+import me.sheimi.logger.LogConfiguration;
 
+public class RepoListActivity extends SheimiFragmentActivity {
+		
+		private final static String TAG = RepoListActivity.class.getCanonicalName();
+		   
     private ListView mRepoList;
     private RepoListAdapter mRepoListAdapter;
 
     private static final int REQUEST_IMPORT_REPO = 0;
     private Intent mImportRepoIntent;
+    
+    private final static String myAppCanonicalName = 
+    		BasicFunctions.getActiveActivity().getClass().getCanonicalName();
+		private final static String myAppPackageName = 
+    		BasicFunctions.getActiveActivity().getClass().getPackage().getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+    		
+    		LogConfiguration.getInstance().InitDefault(
+    				myAppCanonicalName, 
+    				String.format("%s/%s", 
+    					myAppPackageName,
+    					myAppPackageName + ".log")
+    		);
+    		Log.d(TAG, "RepoListActivity.onCreate()");
+    		
         super.onCreate(savedInstanceState);
         PrivateKeyUtils.migratePrivateKeys();
         setContentView(R.layout.activity_main);

@@ -40,8 +40,9 @@ public class RepoListActivity extends SheimiFragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-    		
-    		LogConfiguration.getInstance().InitDefault(
+        super.onCreate(savedInstanceState);
+        
+        LogConfiguration.getInstance().InitDefault(
     				myAppCanonicalName, 
     				String.format("%s/%s", 
     					BasicFunctions.getActiveActivity().getFilesDir(),
@@ -49,7 +50,6 @@ public class RepoListActivity extends SheimiFragmentActivity {
     		);
     		Log.d(TAG, "RepoListActivity.onCreate()");
     		
-        super.onCreate(savedInstanceState);
         PrivateKeyUtils.migratePrivateKeys();
         setContentView(R.layout.activity_main);
         mRepoList = (ListView) findViewById(R.id.repoList);

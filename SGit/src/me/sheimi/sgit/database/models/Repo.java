@@ -33,6 +33,8 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.util.SparseArray;
 
+import me.sheimi.logger.Log;
+
 /**
  * Created by sheimi on 8/20/13.
  */
@@ -456,9 +458,11 @@ public class Repo implements Comparable<Repo>, Serializable {
         } catch (RepositoryNotFoundException e) {
             BasicFunctions
                     .showException(e, R.string.error_repository_not_found);
+            Log.d(TAG, "RepositoryNotFoundException");
             throw new StopTaskException();
         } catch (IOException e) {
             BasicFunctions.showException(e);
+            Log.d(TAG, "IOException");
             throw new StopTaskException();
         }
     }

@@ -44,7 +44,7 @@ public class RepoListActivity extends SheimiFragmentActivity {
     		LogConfiguration.getInstance().InitDefault(
     				myAppCanonicalName, 
     				String.format("%s/%s", 
-    					myAppPackageName,
+    					BasicFunctions.getActiveActivity().getFilesDir(),
     					myAppPackageName + ".log")
     		);
     		Log.d(TAG, "RepoListActivity.onCreate()");

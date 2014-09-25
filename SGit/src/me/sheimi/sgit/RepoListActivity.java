@@ -34,9 +34,9 @@ public class RepoListActivity extends SheimiFragmentActivity {
     private Intent mImportRepoIntent;
     
     private final static String myAppCanonicalName = 
-    		BasicFunctions.getActiveActivity().getClass().getCanonicalName();
+    		RepoListActivity.class.getCanonicalName();
 		private final static String myAppPackageName = 
-    		BasicFunctions.getActiveActivity().getClass().getPackage().getName();
+    		RepoListActivity.class.getPackage().getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

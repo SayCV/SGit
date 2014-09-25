@@ -23,8 +23,18 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.utils.StorageUtils;
 
-public class SheimiFragmentActivity extends Activity {
+import me.sheimi.logger.Log;
+import me.sheimi.logger.LogConfiguration;
 
+public class SheimiFragmentActivity extends Activity {
+		
+		private final static String TAG = SheimiFragmentActivity.class.getCanonicalName();
+		
+		private final static String myAppCanonicalName = 
+    		SheimiFragmentActivity.class.getCanonicalName();
+		private final static String myAppPackageName = 
+    		SheimiFragmentActivity.class.getPackage().getName();
+    
     public static interface OnBackClickListener {
         public boolean onClick();
     }
@@ -33,6 +43,14 @@ public class SheimiFragmentActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         BasicFunctions.setActiveActivity(this);
+        
+        LogConfiguration.getInstance().InitDefault(
+    				myAppCanonicalName, 
+    				String.format("%s/%s", 
+    					BasicFunctions.getActiveActivity().getFilesDir(),
+    					myAppPackageName + ".log")
+    		);
+    		Log.d(TAG, "SheimiFragmentActivity.onCreate()");
     }
 
     @Override

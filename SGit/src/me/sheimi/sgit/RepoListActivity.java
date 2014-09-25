@@ -19,9 +19,7 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import me.sheimi.sgit.ssh.PrivateKeyUtils;
 
-import me.sheimi.android.utils.BasicFunctions;
 import me.sheimi.logger.Log;
-import me.sheimi.logger.LogConfiguration;
 
 public class RepoListActivity extends SheimiFragmentActivity {
 		
@@ -32,23 +30,10 @@ public class RepoListActivity extends SheimiFragmentActivity {
 
     private static final int REQUEST_IMPORT_REPO = 0;
     private Intent mImportRepoIntent;
-    
-    private final static String myAppCanonicalName = 
-    		RepoListActivity.class.getCanonicalName();
-		private final static String myAppPackageName = 
-    		RepoListActivity.class.getPackage().getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
-        LogConfiguration.getInstance().InitDefault(
-    				myAppCanonicalName, 
-    				String.format("%s/%s", 
-    					BasicFunctions.getActiveActivity().getFilesDir(),
-    					myAppPackageName + ".log")
-    		);
-    		Log.d(TAG, "RepoListActivity.onCreate()");
     		
         PrivateKeyUtils.migratePrivateKeys();
         setContentView(R.layout.activity_main);

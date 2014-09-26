@@ -18,6 +18,7 @@ public class CodeGuesser {
     private final static String[][] FILENAME_EXTENSION_ARRAY = {
             { "APL", "text/apl", "apl" },
             { "Asterisk dialplan", "text/x-asterisk", "conf" },
+            { "Batch", "text/x-dos", "bat", "cmd" },
             { "C", "text/x-csrc", "c", "m" },
             { "C++", "text/x-c++src", "cpp", "cc", "hpp", "hh", "h" },
             { "C#", "text/x-csharp", "cs" },

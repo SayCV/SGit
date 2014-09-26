@@ -3,6 +3,11 @@ SGIT
 
 An unofficial Git client for Android
 
+Ref
+---------------
+* Download highlight.pack.js from https://highlightjs.org/download/
+* Download and compress codemirror-compressed.js *.js from http://codemirror.net/1/compress.html
+
 Note
 -------
 * All repositories are stored in [sdcard dir]/Android/data/me.sheimi.sgit/files/repo, you could manually backup repositories if you what to delete this app.

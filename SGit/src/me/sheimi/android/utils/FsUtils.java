@@ -56,8 +56,8 @@ public class FsUtils {
         
         // SDCard Exist ?
         mDir = new File(
-        		Environment.getExternalStorageDirectory(),
-        		"sayWorking");
+        		Environment.getExternalStorageDirectory() + "/sayWorking",
+        		dirname);
         
         if (!mDir.exists() && isCreate) {
             mDir.mkdir();

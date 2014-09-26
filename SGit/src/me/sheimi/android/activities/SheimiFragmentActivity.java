@@ -43,16 +43,17 @@ public class SheimiFragmentActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         BasicFunctions.setActiveActivity(this);
+        
         String myAppName = 
     			BasicFunctions.getActiveActivity().getResources().
     			getString(R.string.app_name);
         LogConfiguration.getInstance().InitDefault(
     				myAppCanonicalName, 
     				String.format("%s/%s", 
-    					BasicFunctions.getActiveActivity().getExternalFilesDir(null)/*getFilesDir()*/,
+    					BasicFunctions.getActiveActivity().getFilesDir(),
     					myAppPackageName + "." + myAppName + ".log")
     		);
-    		Log.d(TAG, "SheimiFragmentActivity.onCreate()");
+    		Log.d(TAG, "LogConfiguration Init Done.");
     }
 
     @Override

@@ -453,6 +453,7 @@ public class Repo implements Comparable<Repo>, Serializable {
             return mGit;
         try {
             File repoFile = getDir();
+            Log.d(TAG, "repoFile: " + repoFile.getName());
             mGit = Git.open(repoFile);
             return mGit;
         } catch (RepositoryNotFoundException e) {

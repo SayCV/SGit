@@ -34,6 +34,8 @@ public class SheimiFragmentActivity extends Activity {
     		SheimiFragmentActivity.class.getCanonicalName();
 		private final static String myAppPackageName = 
     		SheimiFragmentActivity.class.getPackage().getName();
+    private final static String myAppName = 
+    		BasicFunctions.getActiveActivity().getResources().getString(R.string.app_name);
     
     public static interface OnBackClickListener {
         public boolean onClick();
@@ -47,8 +49,8 @@ public class SheimiFragmentActivity extends Activity {
         LogConfiguration.getInstance().InitDefault(
     				myAppCanonicalName, 
     				String.format("%s/%s", 
-    					BasicFunctions.getActiveActivity().getFilesDir(),
-    					myAppPackageName + ".log")
+    					BasicFunctions.getActiveActivity().getExternalFilesDir(null)/*getFilesDir()*/,
+    					myAppPackageName + "." + myAppName + ".log")
     		);
     		Log.d(TAG, "SheimiFragmentActivity.onCreate()");
     }

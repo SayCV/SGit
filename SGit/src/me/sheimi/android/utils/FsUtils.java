@@ -47,7 +47,7 @@ public class FsUtils {
     }
     
 		public static File getPublicDir(String dirname, boolean isCreate) {
-        File mDir = NULL;
+        File mDir;
         
         if(!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
         		// Not found SDCard ?

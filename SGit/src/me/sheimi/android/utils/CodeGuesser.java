@@ -6,15 +6,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import me.sheimi.logger.Log;
+
 /**
  * Created by sheimi on 8/23/13.
  */
 public class CodeGuesser {
-
+		
+		private final static String TAG = CodeGuesser.class.getCanonicalName();
+		
     private final static String[][] FILENAME_EXTENSION_ARRAY = {
             { "APL", "text/apl", "apl" },
             { "Asterisk dialplan", "text/x-asterisk", "conf" },
-            { "Batch", "text/dos", "bat", "cmd" },
             { "C", "text/x-csrc", "c", "m" },
             { "C++", "text/x-c++src", "cpp", "cc", "hpp", "hh", "h" },
             { "C#", "text/x-csharp", "cs" },
@@ -67,7 +70,7 @@ public class CodeGuesser {
             { "Ruby", "text/x-ruby", "rb" },
             { "Scala", "text/x-scala", "scala" },
             { "Scheme", "text/x-scheme", "scm", "ss" },
-            { "Shell", "text/x-sh", "sh", "bash" },
+            { "Shell", "text/x-sh", "sh", "bash", "bat", "cmd" },
             { "Smalltalk", "text/x-stsrc", "st" },
             { "SQL", "text/x-sql", "sql" },
             { "SVG", "image/svg+xml", "svg" },
@@ -113,6 +116,7 @@ public class CodeGuesser {
     }
 
     public static String wrapUrlScript(String script) {
+    		Log.d(TAG, "wrapUrlScript: " + script);
         return String.format(URL_SCRIPT_WRAPPER, script);
     }
 

@@ -214,6 +214,7 @@ public class ViewFileActivity extends SheimiFragmentActivity {
                 public void run() {
                     String lang = CodeGuesser.guessCodeType(mFile.getName());
                     String js = String.format("setLang('%s')", lang);
+                    
                     mFileContent.loadUrl(CodeGuesser.wrapUrlScript(js));
                     mLoading.setVisibility(View.INVISIBLE);
                     mFileContent.loadUrl(CodeGuesser

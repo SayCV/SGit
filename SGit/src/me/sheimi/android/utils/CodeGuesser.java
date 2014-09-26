@@ -71,7 +71,7 @@ public class CodeGuesser {
             { "Ruby", "text/x-ruby", "rb" },
             { "Scala", "text/x-scala", "scala" },
             { "Scheme", "text/x-scheme", "scm", "ss" },
-            { "Shell", "text/x-sh", "sh", "bash", "bat", "cmd" },
+            { "Shell", "text/x-sh", "sh", "bash" },
             { "Smalltalk", "text/x-stsrc", "st" },
             { "SQL", "text/x-sql", "sql" },
             { "SVG", "image/svg+xml", "svg" },

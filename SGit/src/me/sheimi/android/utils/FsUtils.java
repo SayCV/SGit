@@ -42,28 +42,32 @@ public class FsUtils {
         return file;
     }
 		
+		public static File getPublicDir(String dirname) {
+        return getPublicDir(dirname, true);
+    }
+    
 		public static File getPublicDir(String dirname, boolean isCreate) {
+        File mDir = NULL;
         
         if(!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
-            	// Not found SDCard ?
-            	SheimiFragmentActivity activeActivity = BasicFunctions.getActiveActivity();
-            	return activeActivity.getFilesDir();
-            } else {
-            	// SDCard Exist ?
-            	return getDir(dirname, isCreate);
-            }
-        /*File mDir = new File(
-        	Environment.getExternalStorageDirectory().getPath() +
-        	"sayWorking/", 
-        	dirname);
+        		// Not found SDCard ?
+            return getDir(dirname, true);
+        }
+        
+        // SDCard Exist ?
+        mDir = new File(
+        		Environment.getExternalStorageDirectory(),
+        		"sayWorking");
+        
         if (!mDir.exists() && isCreate) {
             mDir.mkdir();
         }
-        return mDir;*/
+        
+        Log.d(TAG, "getDir: " + mDir.getName());
+        return mDir;
     }
     
     public static File getDir(String dirname) {
-        Log.d(TAG, getDir(dirname, true).getName());
         return getDir(dirname, true);
     }
 
@@ -76,6 +80,7 @@ public class FsUtils {
         if (!mDir.exists() && isCreate) {
             mDir.mkdir();
         }
+        Log.d(TAG, "getDir: " + mDir.getName());
         return mDir;
     }
 

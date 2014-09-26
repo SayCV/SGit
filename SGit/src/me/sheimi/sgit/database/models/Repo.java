@@ -440,7 +440,8 @@ public class Repo implements Comparable<Repo>, Serializable {
         if (Repo.isExternal(localpath)) {
             return new File(localpath.substring(Repo.EXTERNAL_PREFIX.length()));
         }
-        File repoDir = FsUtils.getDir(REPO_DIR, true);
+        //File repoDir = FsUtils.getDir(REPO_DIR, true);
+        File repoDir = FsUtils.getPublicDir(REPO_EXT_DIR, true);
         return new File(repoDir, localpath);
     }
 

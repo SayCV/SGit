@@ -14,6 +14,7 @@ public class CodeGuesser {
     private final static String[][] FILENAME_EXTENSION_ARRAY = {
             { "APL", "text/apl", "apl" },
             { "Asterisk dialplan", "text/x-asterisk", "conf" },
+            { "Batch", "text/x-bat", "bat", "cmd" },
             { "C", "text/x-csrc", "c", "m" },
             { "C++", "text/x-c++src", "cpp", "cc", "hpp", "hh", "h" },
             { "C#", "text/x-csharp", "cs" },
@@ -66,7 +67,7 @@ public class CodeGuesser {
             { "Ruby", "text/x-ruby", "rb" },
             { "Scala", "text/x-scala", "scala" },
             { "Scheme", "text/x-scheme", "scm", "ss" },
-            { "Shell", "text/x-sh", "sh", "bash", "bat" },
+            { "Shell", "text/x-sh", "sh", "bash" },
             { "Smalltalk", "text/x-stsrc", "st" },
             { "SQL", "text/x-sql", "sql" },
             { "SVG", "image/svg+xml", "svg" },

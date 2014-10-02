@@ -85,7 +85,7 @@ public class ViewFileActivity extends SheimiFragmentActivity {
     }
 
     private void loadFileContent() {
-        mFileContent.loadUrl("file:///android_asset/editor.html");
+        mFileContent.loadUrl("file:///android_asset/source-editor.html");
         mFileContent.setFocusable(mEditMode);
     }
 

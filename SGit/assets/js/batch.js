@@ -11,7 +11,7 @@
 })(function(CodeMirror) {
 "use strict";
 
-CodeMirror.defineMode('shell', function() {
+CodeMirror.defineMode('batch', function() {
 
   var words = {};
   function define(style, string) {

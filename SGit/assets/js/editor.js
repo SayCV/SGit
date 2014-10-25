@@ -19,7 +19,7 @@
       lineNumbers: true,
       mode: lang,
       matchBrackets: true,
-      lineWrapping: true,
+      lineWrapping: false,
       readOnly: true
     };
     return editor = CodeMirror.fromTextArea(editorElm, editorOption);
